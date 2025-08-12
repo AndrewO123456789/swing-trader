@@ -17,3 +17,9 @@ cd C:\Users\Armit\firebase-site
 firebase deploy --only hosting
 
 
+Authentication Setup
+Uses Firebase Authentication with Google Sign-In
+
+Ensure Google provider is enabled in Firebase Console
+
+Login/logout buttons trigger signInWithPopup() and signOut() via Firebase Auth SDK
