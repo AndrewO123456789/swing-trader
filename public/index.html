@@ -71,47 +71,80 @@
 
     <style>
       body {
-        font-family: Arial, sans-serif;
-        margin: 2em;
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #f4f4f4;
       }
+
+      header, footer {
+        background-color: #1c1c1c;
+        color: white;
+        padding: 1em 2em;
+        text-align: center;
+      }
+
+      nav {
+        background-color: #1c1c1c;
+        display: flex;
+        justify-content: center;
+        gap: 2em;
+        padding: 1em 0;
+      }
+
       nav a {
-        margin-right: 1em;
+        color: #ccc;
         text-decoration: none;
-        color: #0077cc;
+        font-weight: bold;
+        transition: color 0.3s ease;
       }
-      input {
+
+      nav a:hover {
+        color: #00aaff;
+      }
+
+      main {
+        padding: 2em;
+        text-align: center;
+      }
+
+      input, button {
         display: block;
-        margin-top: 1em;
+        margin: 1em auto;
         padding: 0.5em;
         font-size: 1em;
         width: 250px;
       }
-      button {
-        margin-top: 1em;
-        padding: 0.5em 1em;
-        font-size: 1em;
-      }
+
       #userInfo {
         margin-top: 1em;
         font-style: italic;
       }
     </style>
   </head>
+
   <body>
-    <h1>Welcome to Your Modular Dashboard</h1>
+    <header>
+      <h1>SwingTrader Dashboard</h1>
+    </header>
+
     <nav>
-      <a href="#">Home</a> |
-      <a href="#">Alerts</a> |
-      <a href="#">Charts</a> |
+      <a href="#">Home</a>
+      <a href="#">Alerts</a>
+      <a href="#">Charts</a>
       <a href="#">Settings</a>
     </nav>
-    <p>This is your starting point. testing.</p>
 
-    <input type="email" id="emailInput" placeholder="Email" />
-    <input type="password" id="passwordInput" placeholder="Password" />
-    <button id="loginBtn">Login</button>
-    <button id="logoutBtn" style="display:none;">Logout</button>
-    <div id="userInfo"></div>
+    <main>
+      <input type="email" id="emailInput" placeholder="Email" />
+      <input type="password" id="passwordInput" placeholder="Password" />
+      <button id="loginBtn">Login</button>
+      <button id="logoutBtn" style="display: none;">Logout</button>
+      <div id="userInfo"></div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 SwingTrader</p>
+    </footer>
   </body>
 </html>
-<!-- trigger GitHub refresh -->
+
