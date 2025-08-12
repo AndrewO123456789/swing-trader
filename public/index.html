@@ -29,8 +29,7 @@
 
       window.addEventListener("DOMContentLoaded", () => {
         const loginBtn = document.getElementById("loginBtn");
-        const logoutBtn = document.getElementById("logoutBtn");
-        const userInfo = document.getElementById("userInfo");
+        const logoutNav = document.getElementById("logoutNav");
 
         loginBtn.addEventListener("click", () => {
           const email = document.getElementById("emailInput").value;
@@ -38,32 +37,28 @@
 
           signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-              const user = userCredential.user;
               loginBtn.style.display = "none";
-              logoutBtn.style.display = "inline-block";
-              userInfo.innerHTML = `👤 Logged in as <strong>${user.email}</strong>`;
+              logoutNav.style.display = "inline-block";
             })
             .catch((error) => {
               alert("Login failed: " + error.message);
             });
         });
 
-        logoutBtn.addEventListener("click", () => {
+        logoutNav.addEventListener("click", () => {
           signOut(auth);
           loginBtn.style.display = "inline-block";
-          logoutBtn.style.display = "none";
-          userInfo.innerHTML = "";
+          logoutNav.style.display = "none";
+          alert("✅ Successfully logged out");
         });
 
         onAuthStateChanged(auth, (user) => {
           if (user) {
             loginBtn.style.display = "none";
-            logoutBtn.style.display = "inline-block";
-            userInfo.innerHTML = `👤 Logged in as <strong>${user.email}</strong>`;
+            logoutNav.style.display = "inline-block";
           } else {
             loginBtn.style.display = "inline-block";
-            logoutBtn.style.display = "none";
-            userInfo.innerHTML = "";
+            logoutNav.style.display = "none";
           }
         });
       });
@@ -93,6 +88,7 @@
         font-weight: 600;
         font-size: 1.1em;
         transition: color 0.3s ease;
+        cursor: pointer;
       }
 
       nav a:hover {
@@ -113,11 +109,6 @@
         width: 250px;
       }
 
-      #userInfo {
-        margin-top: 1em;
-        font-style: italic;
-      }
-
       footer {
         background-color: #34495e;
         color: white;
@@ -135,14 +126,13 @@
       <a href="#">Alerts</a>
       <a href="#">Charts</a>
       <a href="#">Settings</a>
+      <a id="logoutNav" style="display: none;">Logout</a>
     </nav>
 
     <main>
       <input type="email" id="emailInput" placeholder="Email" />
       <input type="password" id="passwordInput" placeholder="Password" />
       <button id="loginBtn">Login</button>
-      <button id="logoutBtn" style="display: none;">Logout</button>
-      <div id="userInfo"></div>
     </main>
 
     <footer>
