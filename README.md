@@ -1,3 +1,14 @@
+# SwingTrader Dashboard
+
+A modular, Firebase-hosted dashboard for financial data and smart alerts.
+
+[🏠 Back to Repo Homepage](https://github.com/AndrewO123456789/firebase-site)  
+[🌐 Visit Live Site](https://www.swingtrader.co.uk)  
+[📄 Deployment Guide (Google Doc)](https://docs.google.com/document/d/19-VkBeMkXBu47zmKOage_iu6tFMKlNExRdZAB5LBtCI/edit?tab=t.0)
+
+---
+
+
 \# Firebase Site
 
 Modular dashboard hosted via Firebase.
