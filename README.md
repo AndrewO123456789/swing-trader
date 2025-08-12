@@ -1,3 +1,37 @@
+# SwingTrader Setup & Architecture
+
+This project tracks the full lifecycle of the SwingTrader dashboard — from Google Cloud setup to modular repo design, batching logic, and free-tier optimization.
+
+---
+
+## ✅ Setup Checklist
+
+### 🟦 1. Account & Project Setup
+- ✅ Create Google Cloud account (US billing)
+- ✅ Activate $300 free credit
+- ✅ Create project `dashboard-alerts`
+- ✅ Register domain name
+
+### 🟨 2. Hosting
+- ✅ Choose Firebase Hosting  
+  🔹 Static site = Cloud Storage  
+  🔹 Dynamic site = Firebase Hosting
+
+---
+
+## 📁 Current Repo Structure (`firebase-site`)
+
+```bash
+firebase-site/
+├── public/
+│   ├── index.html
+│   ├── logo1024.png
+│   └── favicon.ico
+├── .firebaserc
+├── firebase.json
+├── README.md
+
+
 # SwingTrader Dashboard
 
 A modular, Firebase-hosted dashboard for financial data and smart alerts.
