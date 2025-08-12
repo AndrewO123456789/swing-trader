@@ -37,4 +37,13 @@ You can update the `README.md` file anytime by:
 
 Would you like me to generate the actual file content so you can copy-paste it directly into your folder or repo?
 
-[🏠 Back to Repo Homepage](https://github.com/AndrewO123456789/firebase-site)
+# SwingTrader Dashboard
+
+A modular, Firebase-hosted dashboard for financial data and smart alerts.
+
+[🏠 Back to Repo Homepage](https://github.com/AndrewO123456789/firebase-site)  
+[🌐 Visit Live Site](https://www.swingtrader.co.uk)  
+[📄 Deployment Guide (Google Doc)](https://docs.google.com/document/d/19-VkBeMkXBu47zmKOage_iu6tFMKlNExRdZAB5LBtCI/edit?tab=t.0)
+
+---
+
