@@ -68,7 +68,7 @@
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: #ffffff; /* ✅ Changed from #e8f0fe to pure white */
+      background-color: #ffffff;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -147,12 +147,12 @@
 </head>
 
 <body>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Watchlist</a>
-    <a href="#">Alerts</a>
-    <a href="#">Charts</a>
-    <a href="#">Settings</a>
+  <nav id="mainNav">
+    <a>Home</a>
+    <a>Watchlist</a>
+    <a>Alerts</a>
+    <a>Charts</a>
+    <a>Settings</a>
     <a id="logoutNav" style="display: none;">Logout</a>
   </nav>
 
@@ -168,5 +168,14 @@
   <footer>
     <p>&copy; 2025 SwingTrader</p>
   </footer>
+
+  <script>
+    document.querySelectorAll('#mainNav a').forEach(link => {
+      const pageName = link.textContent.trim().toLowerCase();
+      if (pageName !== "logout") {
+        link.href = `${pageName}.html`;
+      }
+    });
+  </script>
 </body>
 </html>
