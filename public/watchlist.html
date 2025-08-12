@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watchlist</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div id="header"></div>
-
-  <main>
-    <h1>Your Watchlist</h1>
-    <p>This page will display your selected tickers and their latest data.</p>
-  </main>
-
-  <div id="footer"></div>
-
-  <script>
-    // Load header and footer
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header').innerHTML = data);
-
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
-  </script>
-</body>
-</html>
-
+<header>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="watchlist.html" class="active">Watchlist</a></li>
+      <li><a href="alerts.html">Alerts</a></li>
+      <li><a href="charts.html">Charts</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+    <div id="user-info">
+      <span id="user-email">swingtraderdash@gmail.com</span>
+      <span id="user-handle">@Longbarn2112@</span>
+    </div>
+  </nav>
+</header>
