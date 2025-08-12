@@ -36,3 +36,5 @@ You can update the `README.md` file anytime by:
 3. Saving and committing changes to GitHub (if synced)
 
 Would you like me to generate the actual file content so you can copy-paste it directly into your folder or repo?
+
+[🏠 Back to Repo Homepage](https://github.com/AndrewO123456789/firebase-site)
