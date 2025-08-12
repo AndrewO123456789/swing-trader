@@ -1,3 +1,5 @@
+
+test
 # SwingTrader Setup & Architecture
 
 This project tracks the full lifecycle of the SwingTrader dashboard — from Google Cloud setup to modular repo design, batching logic, and free-tier optimization.
