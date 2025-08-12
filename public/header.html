@@ -1,0 +1,17 @@
+<nav id="mainNav">
+  <a>Home</a>
+  <a>Watchlist</a>
+  <a>Alerts</a>
+  <a>Charts</a>
+  <a>Settings</a>
+  <a id="logoutNav" style="display: none;">Logout</a>
+</nav>
+
+<script>
+  document.querySelectorAll('#mainNav a').forEach(link => {
+    const pageName = link.textContent.trim().toLowerCase();
+    if (pageName !== "logout") {
+      link.href = `${pageName}.html`;
+    }
+  });
+</script>
