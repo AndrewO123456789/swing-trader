@@ -74,17 +74,13 @@
         margin: 0;
         font-family: 'Segoe UI', sans-serif;
         background-color: #f4f4f4;
-      }
-
-      header, footer {
-        background-color: #1c1c1c;
-        color: white;
-        padding: 1em 2em;
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
       }
 
       nav {
-        background-color: #1c1c1c;
+        background-color: #121212;
         display: flex;
         justify-content: center;
         gap: 2em;
@@ -94,7 +90,8 @@
       nav a {
         color: #ccc;
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 600;
+        font-size: 1.1em;
         transition: color 0.3s ease;
       }
 
@@ -103,6 +100,7 @@
       }
 
       main {
+        flex: 1;
         padding: 2em;
         text-align: center;
       }
@@ -119,14 +117,19 @@
         margin-top: 1em;
         font-style: italic;
       }
+
+      footer {
+        background-color: #121212;
+        color: white;
+        text-align: center;
+        padding: 1em 2em;
+        font-weight: 600;
+        font-size: 0.9em;
+      }
     </style>
   </head>
 
   <body>
-    <header>
-      <h1>SwingTrader Dashboard</h1>
-    </header>
-
     <nav>
       <a href="#">Home</a>
       <a href="#">Alerts</a>
@@ -147,4 +150,3 @@
     </footer>
   </body>
 </html>
-
