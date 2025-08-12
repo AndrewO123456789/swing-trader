@@ -3,9 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <title>SwingTrader Dashboard</title>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
-    <script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getAuth,
+        signInWithPopup,
+        GoogleAuthProvider,
+        signOut,
+        onAuthStateChanged
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
       const firebaseConfig = {
         apiKey: "AIzaSyAJqSF3941EKzZqO34mEibMhkMxLxe-26g",
         authDomain: "my-first-project-910ac.firebaseapp.com",
@@ -15,8 +22,55 @@
         appId: "1:61871000397:web:f86e5c2bba79a8c2414504",
         measurementId: "G-QT1DHD6CD8"
       };
-      firebase.initializeApp(firebaseConfig);
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+
+      const loginBtn = document.getElementById("loginBtn");
+      const logoutBtn = document.getElementById("logoutBtn");
+      const userInfo = document.getElementById("userInfo");
+
+      loginBtn.addEventListener("click", () => {
+        signInWithPopup(auth, provider);
+      });
+
+      logoutBtn.addEventListener("click", () => {
+        signOut(auth);
+      });
+
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          loginBtn.style.display = "none";
+          logoutBtn.style.display = "inline-block";
+          userInfo.innerHTML = `👤 Logged in as <strong>${user.displayName}</strong>`;
+        } else {
+          loginBtn.style.display = "inline-block";
+          logoutBtn.style.display = "none";
+          userInfo.innerHTML = "";
+        }
+      });
     </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2em;
+      }
+      nav a {
+        margin-right: 1em;
+        text-decoration: none;
+        color: #0077cc;
+      }
+      button {
+        margin-top: 1em;
+        padding: 0.5em 1em;
+        font-size: 1em;
+      }
+      #userInfo {
+        margin-top: 1em;
+        font-style: italic;
+      }
+    </style>
   </head>
   <body>
     <h1>Welcome to Your Modular Dashboard</h1>
@@ -28,34 +82,11 @@
     </nav>
     <p>This is your starting point. Let’s build something great.</p>
 
-    <button id="loginBtn">Login</button>
+    <button id="loginBtn">Login with Google</button>
     <button id="logoutBtn" style="display:none;">Logout</button>
-
-    <script>
-      const auth = firebase.auth();
-      const loginBtn = document.getElementById("loginBtn");
-      const logoutBtn = document.getElementById("logoutBtn");
-
-      loginBtn.addEventListener("click", () => {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(provider);
-      });
-
-      logoutBtn.addEventListener("click", () => {
-        auth.signOut();
-      });
-
-      auth.onAuthStateChanged(user => {
-        if (user) {
-          loginBtn.style.display = "none";
-          logoutBtn.style.display = "inline-block";
-        } else {
-          loginBtn.style.display = "inline-block";
-          logoutBtn.style.display = "none";
-        }
-      });
-    </script>
+    <div id="userInfo"></div>
   </body>
 </html>
+
 
 
