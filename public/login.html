@@ -124,4 +124,31 @@
     const auth = getAuth(app);
 
     window.addEventListener("DOMContentLoaded", () => {
-      const loginBtn = document.getElementById("login
+      const loginBtn = document.getElementById("loginBtn");
+      if (!loginBtn) {
+        console.error("❌ Login button not found in DOM");
+        return;
+      }
+
+      console.log("✅ Login button found");
+
+      loginBtn.addEventListener("click", () => {
+        const email = document.getElementById("emailInput").value;
+        const password = document.getElementById("passwordInput").value;
+
+        console.log("🔐 Attempting login with:", email);
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then(() => {
+            alert("✅ Login successful");
+            window.location.href = "index.html";
+          })
+          .catch((error) => {
+            console.error("❌ Login failed:", error);
+            alert("Login failed: " + error.message);
+          });
+      });
+    });
+  </script>
+</body>
+</html>
