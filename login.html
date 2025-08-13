@@ -124,7 +124,6 @@
     &copy; 2025 My Dashboard. All rights reserved.
   </footer>
   <script>
-    // TODO: Replace with your Firebase project configuration
     const firebaseConfig = {
       apiKey: "YOUR_API_KEY",
       authDomain: "YOUR_AUTH_DOMAIN",
@@ -142,7 +141,6 @@
       errorMsg.textContent = '';
       auth.signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          // Redirect to dashboard or main page
           window.location.href = "/dashboard.html";
         })
         .catch((error) => {
