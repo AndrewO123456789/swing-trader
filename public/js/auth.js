@@ -2,12 +2,12 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
+  authDomain: "swing-trader-6431c.firebaseapp.com",
+  projectId: "swing-trader-6431c",
+  storageBucket: "swing-trader-6431c.firebasestorage.app",
+  messagingSenderId: "255789637374",
+  appId: "1:255789637374:web:1c12a2f513e98559e64faf"
 };
 
 const app = initializeApp(firebaseConfig);
