@@ -22,6 +22,17 @@
           }
         ]
       }
-    ]
+    ],
+    "files": {
+      "/auth.js": {
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript"
+          }
+        ]
+      }
+    }
   }
 }
+
