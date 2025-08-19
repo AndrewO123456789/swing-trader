@@ -3,26 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login</title>
+  <title>Swing Trader Login</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 2rem;
+      margin: 0;
+      padding: 0;
       background-color: #f4f4f4;
+      text-align: center;
     }
+
+    #logo {
+      margin-top: 60px;
+    }
+
     .container {
       max-width: 400px;
-      margin: 150px auto 0 auto; /* Pushes login box down */
+      margin: 40px auto;
       background: white;
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
+
     input {
       width: 100%;
       padding: 0.5rem;
       margin: 0.5rem 0;
     }
+
     button {
       width: 100%;
       padding: 0.7rem;
@@ -32,18 +41,35 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #0056b3;
+    }
+
+    #homeContent {
+      display: none;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <!-- Your logo can go here -->
-  <div class="container">
+  <!-- Logo always visible -->
+  <div id="logo">
+    <img src="logo.png" alt="Swing Trader Logo" width="200" />
+  </div>
+
+  <!-- Login box -->
+  <div class="container" id="loginBox">
     <h2>Login</h2>
     <input type="email" id="emailInput" placeholder="Email" />
     <input type="password" id="passwordInput" placeholder="Password" />
     <button id="loginBtn">Login</button>
+  </div>
+
+  <!-- Homepage content -->
+  <div id="homeContent">
+    <h2>Welcome to Swing Trader</h2>
+    <p>You are now logged in.</p>
   </div>
 
   <script type="module">
@@ -58,7 +84,7 @@
       apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
       authDomain: "swing-trader-6431c.firebaseapp.com",
       projectId: "swing-trader-6431c",
-      storageBucket: "swing-trader-6431c.firebasestorage.app",
+      storageBucket: "swing-trader-6431c.appspot.com",
       messagingSenderId: "255789637374",
       appId: "1:255789637374:web:1c12a2f513e98559e64faf"
     };
@@ -77,8 +103,9 @@
         const user = userCredential.user;
 
         if (user.emailVerified) {
-          alert("Login successful!");
-          // You can redirect or show protected content here
+          alert("You’ve successfully logged in!");
+          document.getElementById("loginBox").style.display = "none";
+          document.getElementById("homeContent").style.display = "block";
         } else {
           await sendEmailVerification(user);
           alert("Please verify your email. A verification link has been sent.");
