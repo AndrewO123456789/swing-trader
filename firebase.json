@@ -8,23 +8,13 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/**",
         "destination": "/index.html"
       }
     ],
     "headers": [
       {
-        "source": "**",
-        "headers": [
-          {
-            "key": "Strict-Transport-Security",
-            "value": "max-age=31536000; includeSubDomains; preload"
-          }
-        ]
-      }
-    ],
-    "files": {
-      "/auth.js": {
+        "source": "/auth.js",
         "headers": [
           {
             "key": "Content-Type",
@@ -32,7 +22,8 @@
           }
         ]
       }
-    }
+    ]
   }
 }
+
 
