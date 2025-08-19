@@ -8,22 +8,16 @@
     ],
     "rewrites": [
       {
-        "source": "/**",
-        "destination": "/index.html"
-      }
-    ],
-    "headers": [
-      {
         "source": "/auth.js",
-        "headers": [
-          {
-            "key": "Content-Type",
-            "value": "application/javascript"
-          }
-        ]
+        "destination": "/auth.js"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   }
 }
+
 
 
