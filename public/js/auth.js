@@ -31,10 +31,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Toggle UI based on auth state
   onAuthStateChanged(auth, (user) => {
-    if (user && user.emailVerified !== false) {
+    if (user && user.emailVerified === true) {
+      console.log("✅ Auth state: Verified user logged in:", user.email);
       if (loginBox) loginBox.style.display = "none";
       if (logoutNav) logoutNav.style.display = "inline-block";
     } else {
+      console.log("🔒 Auth state: No user or email not verified");
       if (loginBox) loginBox.style.display = "block";
       if (logoutNav) logoutNav.style.display = "none";
     }
@@ -42,15 +44,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Handle login
   if (loginBtn) {
-    loginBtn.addEventListener("click", () => {
+    loginBtn.addEventListener("click", (event) => {
+      event.preventDefault(); // Prevent form reload if inside <form>
       const email = emailInput.value;
       const password = passwordInput.value;
 
       signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("✅ Logged in:", user.email);
           alert("✅ Logged in successfully");
         })
         .catch((error) => {
+          console.error("❌ Login error:", error.code, error.message);
           alert("❌ Login failed: " + error.message);
         });
     });
@@ -61,11 +67,14 @@ window.addEventListener("DOMContentLoaded", () => {
     logoutNav.addEventListener("click", () => {
       signOut(auth)
         .then(() => {
+          console.log("✅ Logged out");
           alert("✅ Successfully logged out");
         })
         .catch((error) => {
+          console.error("❌ Logout error:", error.code, error.message);
           alert("❌ Logout failed: " + error.message);
         });
     });
   }
 });
+
