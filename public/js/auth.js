@@ -1,66 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Swing Trader</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
+// public/js/auth.js
 
-    header, footer {
-      background-color: #333;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
+// ✅ Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
+  authDomain: "swing-trader-6431c.firebaseapp.com",
+  projectId: "swing-trader-6431c",
+  storageBucket: "swing-trader-6431c.firebasestorage.app",
+  messagingSenderId: "255789637374",
+  appId: "1:255789637374:web:1c12a2f513e98559e64faf"
+};
 
-    nav {
-      background-color: #007bff;
-      padding: 0.5rem;
-      text-align: center;
-    }
+// ✅ Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-    nav a {
-      color: white;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+// ✅ Wait for DOM to load and attach login listener
+document.addEventListener('DOMContentLoaded', () => {
+  const loginBtn = document.getElementById('loginBtn');
+  if (loginBtn) {
+    loginBtn.addEventListener('click', () => {
+      const email = prompt("Enter your email:");
+      const password = prompt("Enter your password:");
 
-    .container {
-      padding: 2rem;
-      text-align: center;
-    }
+      if (!email || !password) {
+        alert("Email and password are required.");
+        return;
+      }
 
-    #logo {
-      height: 60px;
-      margin-bottom: 1rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="logo1024.png" alt="Swing Trader Logo" id="logo" />
-    <h1>Swing Trader Dashboard</h1>
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="watchlist.html">Watchlist</a>
-    <a href="settings.html">Settings</a>
-  </nav>
-
-  <div class="container">
-    <h2>Welcome to Swing Trader</h2>
-    <p>This is your dashboard. Customize it however you like.</p>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 Swing Trader. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          return userCredential.user.getIdToken();
+        })
+        .then((idToken) => {
+          console.log('✅ ID Token:', idToken);
+          // TODO: Send token to backend for verification
+        })
+        .catch((error) => {
+          console.error('❌ Login failed:', error.message);
+          alert("Login failed: " + error.message);
+        });
+    });
+  } else {
+    console.warn("⚠️ Login button not found in DOM.");
+  }
+});
