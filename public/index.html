@@ -13,6 +13,7 @@
       flex-direction: column;
       min-height: 100vh;
     }
+
     nav {
       background-color: #2c3e50;
       display: flex;
@@ -20,6 +21,7 @@
       gap: 2em;
       padding: 1em 0;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -28,66 +30,76 @@
       transition: color 0.3s ease;
       cursor: pointer;
     }
+
     nav a:hover {
       color: #00aaff;
     }
+
     main {
       flex: 1;
       padding: 2em;
       text-align: center;
     }
+
     #logo {
-       display: block;
-  margin: 2em auto 1em auto; /* reduced top and bottom spacing */
-  max-width: 400px;
-  width: 90%;
-  height: auto;
-  padding-bottom: 0.5em; /* added to tighten spacing below logo */
-}
+      display: block;
+      margin: 2em auto 1em auto;
+      max-width: 400px;
+      width: 90%;
+      height: auto;
+      padding-bottom: 0.5em;
     }
+
     .login-box {
       background: #fff;
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      width: 50%;
-      max-width: 250px;
+      width: auto;
+      max-width: 300px;
       margin: 2em auto;
       text-align: left;
     }
+
     .login-box h2 {
       text-align: center;
       color: #2c3e50;
       margin-bottom: 1em;
     }
+
     .login-box label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 500;
     }
-    .login-box input {
-      width: 100%;
+
+    .login-box input,
+    .login-box button {
+      width: 90%;
+      margin: 0 auto 1rem auto;
+      display: block;
       padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
       border-radius: 4px;
       font-size: 1rem;
     }
+
+    .login-box input {
+      border: 1px solid #ccc;
+    }
+
     .login-box button {
-      width: 100%;
-      padding: 0.75rem;
       background: #2c3e50;
       color: #fff;
       border: none;
-      border-radius: 4px;
-      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
     }
+
     .login-box button:hover {
       background: #00aaff;
     }
+
     footer {
       background-color: #34495e;
       color: white;
