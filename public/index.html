@@ -20,6 +20,7 @@
       justify-content: center;
       gap: 2em;
       padding: 1em 0;
+      position: relative;
     }
 
     nav a {
@@ -33,6 +34,38 @@
 
     nav a:hover {
       color: #00aaff;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #2c3e50;
+      min-width: 160px;
+      z-index: 1;
+      flex-direction: column;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 0.75em 1em;
+      text-decoration: none;
+      display: block;
+      font-weight: 500;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #00aaff;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: flex;
     }
 
     main {
@@ -113,7 +146,16 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="watchlist.html">Watchlist</a>
-    <a href="#">Alerts</a>
+
+    <div class="dropdown">
+      <a href="#">Alerts ▾</a>
+      <div class="dropdown-content">
+        <a href="newalert.html">New Alert</a>
+        <a href="setalerts.html">Set Alerts</a>
+        <a href="triggeredalerts.html">Triggered Alerts</a>
+      </div>
+    </div>
+
     <a href="#">Charts</a>
     <a href="#">Settings</a>
     <a id="logout-btn">Logout</a>
