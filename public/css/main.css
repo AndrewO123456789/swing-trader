@@ -31,35 +31,66 @@ nav {
   gap: 2em;
   padding: 0.5em 0;
   margin-top: 0;
+  position: relative;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
+nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
   transition: color 0.3s ease;
+  line-height: 1.1em;
+  position: relative;
 }
 
-nav ul li a.active {
+nav a:hover {
+  color: #00aaff;
+  text-decoration: none;
+}
+
+nav a.active {
   color: #00aaff;
   font-weight: bold;
   text-decoration: none;
 }
 
-nav ul li a:hover {
-  color: #00aaff;
+/* Dropdown styles */
+.dropdown-trigger {
+  position: relative;
+  z-index: 2;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2c3e50;
+  display: none;
+  flex-direction: column;
+  border-radius: 4px;
+  z-index: 1;
+  min-width: 140px;
+  padding-top: 0.5em; /* Prevents hover gap */
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 0.5em 0.75em;
   text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+.dropdown-content a:hover {
+  background-color: #00aaff;
+}
+
+/* Keeps dropdown visible on hover */
+.dropdown-trigger:hover + .dropdown-content,
+.dropdown-content:hover {
+  display: flex;
 }
 
 /* User info */
