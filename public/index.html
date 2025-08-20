@@ -145,21 +145,28 @@
       });
 
       logoutBtn.addEventListener("click", () => {
+        console.log("🚪 Logout button clicked");
+
         firebase.auth().signOut()
           .then(() => {
-            console.log("👋 Logged out");
+            console.log("✅ Firebase signOut() completed");
 
-            // ✅ Show login box again
+            firebase.auth().onAuthStateChanged((user) => {
+              if (!user) {
+                console.log("🧼 Confirmed: user is signed out");
+              } else {
+                console.warn("⚠️ Still signed in:", user);
+              }
+            });
+
             const loginBox = document.querySelector(".login-box");
             if (loginBox) {
               loginBox.style.display = "block";
             }
 
-            // ✅ Clear input fields
             document.getElementById("emailInput").value = "";
             document.getElementById("passwordInput").value = "";
 
-            // ✅ Optional redirect to homepage
             if (window.location.pathname !== "/index.html") {
               window.location.href = "index.html";
             }
