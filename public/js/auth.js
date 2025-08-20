@@ -19,5 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("ℹ️ Firebase already initialized");
   }
 
-  // 🧼 Legacy login listener removed — login now handled in index.html
+  // ✅ Stage 2: Safe onAuthStateChanged logic
+  firebase.auth().onAuthStateChanged(user => {
+    const loginBox = document.querySelector(".login-box");
+    if (user && loginBox) {
+      loginBox.style.display = "none";
+      console.log("👤 User logged in — hiding login box");
+    }
+  });
 });
+
