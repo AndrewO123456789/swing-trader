@@ -159,15 +159,6 @@
             console.error("❌ Login failed:", error.message);
           });
       });
-
-      // ✅ Task 2: Hide login box if user is already logged in
-      firebase.auth().onAuthStateChanged(user => {
-        const loginBox = document.querySelector(".login-box");
-        if (user && loginBox) {
-          loginBox.style.display = "none";
-          console.log("👤 User logged in — hiding login box");
-        }
-      });
     });
   </script>
 
