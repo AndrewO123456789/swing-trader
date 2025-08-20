@@ -31,28 +31,31 @@
       transition: color 0.3s ease;
       cursor: pointer;
       line-height: 1.1em;
-      position: relative;
     }
 
     nav a:hover {
       color: #00aaff;
     }
 
-    .dropdown-trigger {
+    .dropdown {
       position: relative;
+    }
+
+    .dropdown-trigger {
+      display: inline-block;
+      padding: 0.5em 0;
     }
 
     .dropdown-content {
       position: absolute;
       top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 0;
       background-color: #2c3e50;
       display: none;
       flex-direction: column;
       border-radius: 4px;
-      z-index: 10;
       min-width: 140px;
+      z-index: 10;
     }
 
     .dropdown-content a {
@@ -67,8 +70,7 @@
       background-color: #00aaff;
     }
 
-    .dropdown-trigger:hover + .dropdown-content,
-    .dropdown-content:hover {
+    .dropdown:hover .dropdown-content {
       display: flex;
     }
 
@@ -150,11 +152,13 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="watchlist.html">Watchlist</a>
-    <a href="#" class="dropdown-trigger">Alerts</a>
-    <div class="dropdown-content">
-      <a href="newalert.html">New Alert</a>
-      <a href="setalerts.html">Set Alerts</a>
-      <a href="triggeredalerts.html">Triggered Alerts</a>
+    <div class="dropdown">
+      <a href="#" class="dropdown-trigger">Alerts</a>
+      <div class="dropdown-content">
+        <a href="newalert.html">New Alert</a>
+        <a href="setalerts.html">Set Alerts</a>
+        <a href="triggeredalerts.html">Triggered Alerts</a>
+      </div>
     </div>
     <a href="#">Charts</a>
     <a href="#">Settings</a>
