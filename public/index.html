@@ -148,6 +148,21 @@
         firebase.auth().signOut()
           .then(() => {
             console.log("👋 Logged out");
+
+            // ✅ Show login box again
+            const loginBox = document.querySelector(".login-box");
+            if (loginBox) {
+              loginBox.style.display = "block";
+            }
+
+            // ✅ Clear input fields
+            document.getElementById("emailInput").value = "";
+            document.getElementById("passwordInput").value = "";
+
+            // ✅ Optional redirect to homepage
+            if (window.location.pathname !== "/index.html") {
+              window.location.href = "index.html";
+            }
           })
           .catch((error) => {
             console.error("❌ Logout error:", error.message);
