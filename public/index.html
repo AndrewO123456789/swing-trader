@@ -153,19 +153,6 @@
             console.error("❌ Logout error:", error.message);
           });
       });
-
-      // ✅ Stage 2: Safe onAuthStateChanged logic
-      if (firebase.apps.length > 0) {
-        firebase.auth().onAuthStateChanged(user => {
-          const loginBox = document.querySelector(".login-box");
-          if (user && loginBox) {
-            loginBox.style.display = "none";
-            console.log("👤 User logged in — hiding login box");
-          }
-        });
-      } else {
-        console.warn("⚠️ Firebase not initialized yet — skipping auth listener");
-      }
     });
   </script>
 
