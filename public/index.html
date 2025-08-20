@@ -22,12 +22,19 @@
       min-height: 100vh;
     }
 
+    /* Layout containers */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
     /* Navigation bar */
     nav {
       background-color: #2c3e50;
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 2em;
       padding: 0.5em 0;
       margin-top: 0;
@@ -41,6 +48,7 @@
       font-size: 1.1em;
       transition: color 0.3s ease;
       line-height: 1.1em;
+      position: relative;
       display: flex;
       align-items: center;
     }
@@ -64,14 +72,14 @@
     }
 
     .dropdown-trigger {
+      display: inline-block;
+      padding: 0;
       font-weight: bold;
       font-size: 1.1em;
       color: white;
       text-decoration: none;
       line-height: 1.1em;
       transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
     }
 
     .dropdown-content {
@@ -103,10 +111,19 @@
       display: flex;
     }
 
+    /* User info */
+    #user-info {
+      position: absolute;
+      right: 1em;
+      top: 0.5em;
+      color: white;
+      font-size: 0.9em;
+    }
+
     /* Main content */
     main {
       flex: 1;
-      padding: 2em;
+      padding: 1em;
       text-align: center;
     }
 
@@ -124,7 +141,7 @@
       padding: 1.5rem 2rem 2rem 2rem;
       border-radius: 8px;
       width: auto;
-      max-width: 300px;
+      max-width: 360px;
       margin: 1em auto;
       text-align: left;
     }
@@ -137,7 +154,7 @@
 
     .login-box input,
     .login-box button {
-      width: 90%;
+      width: 100%;
       margin: 0 auto 1rem auto;
       display: block;
       padding: 0.75rem;
@@ -167,9 +184,27 @@
       background-color: #2c3e50;
       color: white;
       text-align: center;
-      padding: 1em 2em;
+      padding: 0.5em 0;
       font-weight: 600;
       font-size: 0.9em;
+    }
+
+    /* Watchlist section */
+    #watchlist-section {
+      margin-top: 1em;
+    }
+
+    /* Login form */
+    #login-form {
+      margin-top: 2em;
+    }
+
+    form input,
+    form button {
+      display: block;
+      margin: 0.5em auto;
+      padding: 0.5em;
+      width: 200px;
     }
   </style>
 </head>
