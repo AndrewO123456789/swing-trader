@@ -54,7 +54,6 @@
       background: #fff;
       padding: 2rem;
       border-radius: 8px;
-      /* Removed box-shadow */
       width: auto;
       max-width: 300px;
       margin: 1em auto;
@@ -155,6 +154,7 @@
           })
           .catch((error) => {
             console.error("❌ Login failed:", error.message);
+            alert("Login failed: Incorrect email or password.");
           });
       });
 
