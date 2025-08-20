@@ -42,6 +42,8 @@ nav a {
   transition: color 0.3s ease;
   line-height: 1.1em;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 nav a:hover {
@@ -58,11 +60,19 @@ nav a.active {
 /* Dropdown styles */
 .dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .dropdown-trigger {
   display: inline-block;
-  padding: 0.5em 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: white;
+  text-decoration: none;
+  line-height: 1.1em;
+  transition: color 0.3s ease;
 }
 
 .dropdown-content {
