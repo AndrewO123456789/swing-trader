@@ -223,7 +223,6 @@
       <button id="loginBtn">Login</button>
     </div>
   </main>
-
   <footer>
     <p>&copy; 2025 SwingTrader.co.uk</p>
   </footer>
@@ -289,26 +288,27 @@
     });
   </script>
 
- <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
-    authDomain: "swing-trader-6431c.firebaseapp.com",
-    projectId: "swing-trader-6431c",
-    storageBucket: "swing-trader-6431c.appspot.com", // ✅ corrected
-    messagingSenderId: "255789637374",
-    appId: "1:255789637374:web:1c12a2f513e98559e64faf"
-  };
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
+      authDomain: "swing-trader-6431c.firebaseapp.com",
+      projectId: "swing-trader-6431c",
+      storageBucket: "swing-trader-6431c.appspot.com", // ✅ corrected
+      messagingSenderId: "255789637374",
+      appId: "1:255789637374:web:1c12a2f513e98559e64faf"
+    };
 
-  firebase.initializeApp(firebaseConfig);
+    firebase.initializeApp(firebaseConfig);
+    console.log("🔥 Firebase initialized");
 
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      window.location.href = "/watchlist.html";
-    }
-  });
-</script>
- 
+    firebase.auth().onAuthStateChanged(user => {
+      if (user && window.location.pathname === "/index.html") {
+        window.location.href = "/watchlist.html";
+      }
+    });
+  </script>
 </body>
 </html>
+
