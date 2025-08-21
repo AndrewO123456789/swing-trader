@@ -1,6 +1,8 @@
 // public/js/auth.js
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("[SwingTrader] 🚀 DOM fully loaded — initializing Firebase");
+
   // ✅ Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
@@ -14,18 +16,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // ✅ Initialize Firebase
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-    console.log("✅ Firebase initialized");
+    console.log("[SwingTrader] ✅ Firebase initialized");
   } else {
-    console.log("ℹ️ Firebase already initialized");
+    console.log("[SwingTrader] ℹ️ Firebase already initialized");
   }
 
   // ✅ Stage 2: Safe onAuthStateChanged logic
   firebase.auth().onAuthStateChanged(user => {
     const loginBox = document.querySelector(".login-box");
-    if (user && loginBox) {
-      loginBox.style.display = "none";
-      console.log("👤 User logged in — hiding login box");
+
+    if (user) {
+      console.log(`[SwingTrader] 👤 User logged in: ${user.email}`);
+      if (loginBox) {
+        loginBox.style.display = "none";
+        console.log("[SwingTrader] 🧼 Hiding login box");
+      }
+      document.body.style.visibility = "visible";
+    } else {
+      console.warn("[SwingTrader] ⛔ No user detected — login required");
+      document.body.style.visibility = "visible"; // Fail-safe: show page even if loginBox missing
     }
   });
 });
-
