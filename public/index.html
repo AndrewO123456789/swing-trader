@@ -214,77 +214,76 @@
   </nav>
 
   <main>
-    <img src="logo1024.png" alt="SwingTrader Logo" id="logo" />
-    <div class="login-box">
-      <label for="emailInput">Email</label>
-      <input type="email" id="emailInput" />
-      <label for="passwordInput">Password</label>
-      <input type="password" id="passwordInput" />
-      <button id="loginBtn">Login</button>
-    </div>
-  </main>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      onAuthStateChanged,
-      signOut
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  <img src="logo1024.png" alt="SwingTrader Logo" id="logo" />
+  <div class="login-box">
+    <label for="emailInput">Email</label>
+    <input type="email" id="emailInput" />
+    <label for="passwordInput">Password</label>
+    <input type="password" id="passwordInput" />
+    <button id="loginBtn">Login</button>
+  </div>
+</main>
 
-    const firebaseConfig = {
-  apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
-  authDomain: "swing-trader-6431c.firebaseapp.com",
-  projectId: "swing-trader-6431c",
-  storageBucket: "swing-trader-6431c.firebasestorage.app",
-  messagingSenderId: "255789637374",
-  appId: "1:255789637374:web:1c12a2f513e98559e64faf"
-};
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  console.log("🚀 Initializing Firebase for index.html");
 
-    const loginBtn = document.getElementById("loginBtn");
-    loginBtn.addEventListener("click", () => {
-      const email = document.getElementById("emailInput").value;
-      const password = document.getElementById("passwordInput").value;
+  const firebaseConfig = {
+    apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
+    authDomain: "swing-trader-6431c.firebaseapp.com",
+    projectId: "swing-trader-6431c",
+    storageBucket: "swing-trader-6431c.firebasestorage.app",
+    messagingSenderId: "255789637374",
+    appId: "1:255789637374:web:1c12a2f513e98559e64faf"
+  };
 
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("Login successful:", user.uid);
-          // No redirect — user stays on homepage
-        })
-        .catch((error) => {
-          console.error("Login error:", error.message);
-          alert("Login failed: " + error.message);
-        });
-    });
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log("User is logged in:", user.uid);
-        // No redirect — stay on homepage
-      } else {
-        console.log("No user is logged in.");
-      }
-    });
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      console.log("✅ User is logged in:", user.email);
+    } else {
+      console.log("🔒 No user is logged in.");
+    }
+  });
 
-    const logoutBtn = document.getElementById("logout-btn");
-    logoutBtn.addEventListener("click", () => {
-      signOut(auth)
-        .then(() => {
-          console.log("User signed out.");
-          window.location.href = "index.html";
-        })
-        .catch((error) => {
-          console.error("Logout error:", error.message);
-        });
-    });
-  </script>
-  <footer>
-    &copy; 2025 SwingTrader. All rights reserved.
-  </footer>
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    const email = document.getElementById("emailInput").value;
+    const password = document.getElementById("passwordInput").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log("✅ Login successful:", userCredential.user.email);
+        alert("Welcome back, " + userCredential.user.email);
+      })
+      .catch((error) => {
+        console.error("❌ Login error:", error.message);
+        alert("Login failed: " + error.message);
+      });
+  });
+
+  document.getElementById("logout-btn").addEventListener("click", () => {
+    signOut(auth)
+      .then(() => {
+        console.log("👋 User signed out.");
+        window.location.href = "index.html";
+      })
+      .catch((error) => {
+        console.error("❌ Logout error:", error.message);
+      });
+  });
+</script>
+
+<footer>
+  &copy; 2025 SwingTrader. All rights reserved.
+</footer>
 </body>
 </html>
-
