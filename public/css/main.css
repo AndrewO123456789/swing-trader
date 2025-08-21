@@ -30,7 +30,6 @@ nav {
   justify-content: center;
   gap: 2em;
   padding: 0.5em 0;
-  margin-top: 0;
   position: relative;
 }
 
@@ -39,22 +38,18 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1em;
-  transition: color 0.3s ease;
   line-height: 1.1em;
-  position: relative;
+  transition: color 0.3s ease;
   display: flex;
   align-items: center;
 }
 
 nav a:hover {
   color: #00aaff;
-  text-decoration: none;
 }
 
 nav a.active {
   color: #00aaff;
-  font-weight: bold;
-  text-decoration: none;
 }
 
 /* Dropdown styles */
@@ -88,7 +83,7 @@ nav a.active {
 }
 
 .dropdown-content a {
-  color: white;
+  color: #2c3e50;             /* DARK text on white background */
   padding: 0.5em 0.75em;
   text-decoration: none;
   font-weight: bold;
@@ -97,12 +92,12 @@ nav a.active {
   background-color: transparent;
 }
 
-.dropdown-content a:hover {
-  color: #00aaff;
-  background-color: transparent;
+nav .dropdown-content a:hover {
+  color: #00aaff !important; /* ONLY text turns blue */
+  background-color: transparent !important;
 }
 
-/* Keeps dropdown visible on hover */
+/* Show dropdown on hover */
 .dropdown:hover .dropdown-content {
   display: flex;
 }
