@@ -6,33 +6,13 @@
   <title>Watchlist</title>
   <link rel="stylesheet" href="css/main.css" />
 
-  <!-- Firebase SDK (ESM for modular use) -->
+  <!-- Modular Firebase + Guard -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { initializeAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    import { app } from "./js/firebaseConfig.js";
     import { protectPage } from "./js/authGuard.js";
 
-    document.addEventListener("DOMContentLoaded", () => {
-      console.log("[SwingTrader] 🚀 Initializing Firebase for watchlist.html");
-
-      const firebaseConfig = {
-        apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
-        authDomain: "swing-trader-6431c.firebaseapp.com",
-        projectId: "swing-trader-6431c",
-        storageBucket: "swing-trader-6431c.firebasestorage.app",
-        messagingSenderId: "255789637374",
-        appId: "1:255789637374:web:1c12a2f513e98559e64faf"
-      };
-
-      console.log("[SwingTrader] 🔍 Firebase config loaded:", firebaseConfig);
-
-      const app = initializeApp(firebaseConfig);
-      console.log("[SwingTrader] ✅ Firebase initialized:", app.name);
-
-      initializeAuth(app); // ✅ Registers the auth component
-
-      protectPage(app, "/index.html");
-    });
+    console.log("[SwingTrader] 🚀 Firebase app imported from firebaseConfig.js");
+    protectPage(app, "/index.html");
   </script>
 </head>
 <body style="visibility: hidden;">
