@@ -11,7 +11,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { protectPage } from "./js/authGuard.js";
 
-    console.log("🚀 Initializing Firebase for watchlist.html");
+    console.log("[SwingTrader] 🚀 Initializing Firebase for watchlist.html");
 
     const firebaseConfig = {
       apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
@@ -22,13 +22,12 @@
       appId: "1:255789637374:web:1c12a2f513e98559e64faf"
     };
 
-    console.log("🔍 Firebase config loaded:", firebaseConfig);
+    console.log("[SwingTrader] 🔍 Firebase config loaded:", firebaseConfig);
 
     const app = initializeApp(firebaseConfig);
-    console.log("✅ Firebase initialized:", app.name);
+    console.log("[SwingTrader] ✅ Firebase initialized:", app.name);
 
-    protectPage("/index.html");
-    console.log("🔐 protectPage() invoked — awaiting auth state...");
+    protectPage(app, "/index.html");
   </script>
 </head>
 <body style="visibility: hidden;">
