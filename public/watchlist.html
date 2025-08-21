@@ -23,7 +23,7 @@
     firebase.initializeApp(firebaseConfig);
   </script>
 </head>
-<body>
+<body style="visibility: hidden;">
   <header>
     <nav>
       <ul id="navMenu">
@@ -64,8 +64,13 @@
     logoutItem.appendChild(logoutLink);
 
     auth.onAuthStateChanged((user) => {
+      document.body.style.visibility = "visible";
+
       if (user) {
-        navMenu.appendChild(logoutItem);
+        if (!document.getElementById("logout-link")) {
+          logoutLink.id = "logout-link";
+          navMenu.appendChild(logoutItem);
+        }
       } else {
         window.location.href = "/login.html";
       }
