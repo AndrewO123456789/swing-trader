@@ -8,23 +8,27 @@
 
   <!-- Firebase SDK (ESM for modular use) -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { protectPage } from "./js/authGuard.js";
 
     console.log("🚀 Initializing Firebase for watchlist.html");
 
     const firebaseConfig = {
-      apiKey: "AIzaSyAJqSF3941EKzZqO34mEibMhkMxLxe-26g",
-      authDomain: "my-first-project-910ac.firebaseapp.com",
-      projectId: "my-first-project-910ac",
-      storageBucket: "my-first-project-910ac.appspot.com",
-      messagingSenderId: "61871000397",
-      appId: "1:61871000397:web:f86e5c2bba79a8c2414504",
-      measurementId: "G-QT1DHD6CD8"
+      apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
+      authDomain: "swing-trader-6431c.firebaseapp.com",
+      projectId: "swing-trader-6431c",
+      storageBucket: "swing-trader-6431c.firebasestorage.app",
+      messagingSenderId: "255789637374",
+      appId: "1:255789637374:web:1c12a2f513e98559e64faf"
     };
 
-    initializeApp(firebaseConfig);
-    protectPage("/index.html"); // Redirect to branded login if not authenticated
+    console.log("🔍 Firebase config loaded:", firebaseConfig);
+
+    const app = initializeApp(firebaseConfig);
+    console.log("✅ Firebase initialized:", app.name);
+
+    protectPage("/index.html");
+    console.log("🔐 protectPage() invoked — awaiting auth state...");
   </script>
 </head>
 <body style="visibility: hidden;">
