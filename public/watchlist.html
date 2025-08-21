@@ -6,10 +6,13 @@
   <title>Watchlist</title>
   <link rel="stylesheet" href="css/main.css" />
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
-  <script>
+  <!-- Firebase SDK (ESM for modular use) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import { protectPage } from "./js/authGuard.js";
+
+    console.log("🚀 Initializing Firebase for watchlist.html");
+
     const firebaseConfig = {
       apiKey: "AIzaSyAJqSF3941EKzZqO34mEibMhkMxLxe-26g",
       authDomain: "my-first-project-910ac.firebaseapp.com",
@@ -20,7 +23,8 @@
       measurementId: "G-QT1DHD6CD8"
     };
 
-    firebase.initializeApp(firebaseConfig);
+    initializeApp(firebaseConfig);
+    protectPage("/index.html"); // Redirect to branded login if not authenticated
   </script>
 </head>
 <body style="visibility: hidden;">
@@ -45,36 +49,5 @@
   <footer>
     <p>© 2025 SwingTrader.co.uk</p>
   </footer>
-
-  <!-- Auth Protection + Logout -->
-  <script>
-    const auth = firebase.auth();
-    const navMenu = document.getElementById("navMenu");
-
-    const logoutItem = document.createElement("li");
-    const logoutLink = document.createElement("a");
-    logoutLink.textContent = "Logout";
-    logoutLink.style.cursor = "pointer";
-    logoutLink.onclick = () => {
-      auth.signOut().then(() => {
-        alert("You have successfully logged out");
-        window.location.href = "/index.html";
-      });
-    };
-    logoutItem.appendChild(logoutLink);
-
-    auth.onAuthStateChanged((user) => {
-      document.body.style.visibility = "visible";
-
-      if (user) {
-        if (!document.getElementById("logout-link")) {
-          logoutLink.id = "logout-link";
-          navMenu.appendChild(logoutItem);
-        }
-      } else {
-        window.location.href = "/login.html";
-      }
-    });
-  </script>
 </body>
 </html>
