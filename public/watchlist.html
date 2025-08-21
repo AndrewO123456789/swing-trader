@@ -11,23 +11,25 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { protectPage } from "./js/authGuard.js";
 
-    console.log("[SwingTrader] 🚀 Initializing Firebase for watchlist.html");
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("[SwingTrader] 🚀 Initializing Firebase for watchlist.html");
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
-      authDomain: "swing-trader-6431c.firebaseapp.com",
-      projectId: "swing-trader-6431c",
-      storageBucket: "swing-trader-6431c.firebasestorage.app",
-      messagingSenderId: "255789637374",
-      appId: "1:255789637374:web:1c12a2f513e98559e64faf"
-    };
+      const firebaseConfig = {
+        apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
+        authDomain: "swing-trader-6431c.firebaseapp.com",
+        projectId: "swing-trader-6431c",
+        storageBucket: "swing-trader-6431c.firebasestorage.app",
+        messagingSenderId: "255789637374",
+        appId: "1:255789637374:web:1c12a2f513e98559e64faf"
+      };
 
-    console.log("[SwingTrader] 🔍 Firebase config loaded:", firebaseConfig);
+      console.log("[SwingTrader] 🔍 Firebase config loaded:", firebaseConfig);
 
-    const app = initializeApp(firebaseConfig);
-    console.log("[SwingTrader] ✅ Firebase initialized:", app.name);
+      const app = initializeApp(firebaseConfig);
+      console.log("[SwingTrader] ✅ Firebase initialized:", app.name);
 
-    protectPage(app, "/index.html");
+      protectPage(app, "/index.html");
+    });
   </script>
 </head>
 <body style="visibility: hidden;">
