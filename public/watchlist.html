@@ -9,6 +9,7 @@
   <!-- Firebase SDK (ESM for modular use) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { initializeAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { protectPage } from "./js/authGuard.js";
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -27,6 +28,8 @@
 
       const app = initializeApp(firebaseConfig);
       console.log("[SwingTrader] ✅ Firebase initialized:", app.name);
+
+      initializeAuth(app); // ✅ Registers the auth component
 
       protectPage(app, "/index.html");
     });
