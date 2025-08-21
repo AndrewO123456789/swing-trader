@@ -1,10 +1,15 @@
 // public/js/authGuard.js
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
-export function protectPage(redirectTo = "/index.html") {
+/**
+ * Modular page protection for SwingTrader
+ * @param {FirebaseApp} app - Firebase app instance
+ * @param {string} redirectTo - Path to redirect if user is not authenticated
+ */
+export function protectPage(app, redirectTo = "/index.html") {
   console.log("🔍 protectPage() invoked — checking auth state...");
 
-  const auth = getAuth();
+  const auth = getAuth(app); // ✅ Pass app explicitly
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
