@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blank Page</title>
+  <link rel="stylesheet" href="css/main.css" />
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAJqSF3941EKzZqO34mEibMhkMxLxe-26g",
+      authDomain: "my-first-project-910ac.firebaseapp.com",
+      projectId: "my-first-project-910ac",
+      storageBucket: "my-first-project-910ac.appspot.com",
+      messagingSenderId: "61871000397",
+      appId: "1:61871000397:web:f86e5c2bba79a8c2414504",
+      measurementId: "G-QT1DHD6CD8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="watchlist.html">Watchlist</a></li>
+        <li><a href="alerts.html">Alerts</a></li>
+        <li><a href="charts.html">Charts</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <main>
+    <h2>Blank Page</h2>
+    <p>This is a new protected page. Add your content here.</p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 SwingTrader.co.uk</p>
+  </footer>
+
+  <!-- Auth Protection + Logout -->
+  <script type="module">
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+    const auth = getAuth();
+    const navMenu = document.getElementById("navMenu");
+
+    const logoutItem = document.createElement("li");
+    const logoutLink = document.createElement("a");
+    logoutLink.textContent = "Logout";
+    logoutLink.style.cursor = "pointer";
+    logoutLink.onclick = () => {
+      signOut(auth).then(() => {
+        alert("You have successfully logged out");
+        window.location.href = "/index.html";
+      });
+    };
+    logoutItem.appendChild(logoutLink);
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navMenu.appendChild(logoutItem);
+      } else {
+        window.location.href = "/login.html";
+      }
+    });
+  </script>
+
+</body>
+</html>
