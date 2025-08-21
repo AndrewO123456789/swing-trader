@@ -1,40 +1,23 @@
-// public/js/auth.js
+// public/js/authGuard.js
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log("[SwingTrader] 🚀 DOM fully loaded — initializing Firebase");
+/**
+ * Atomic page protection logic for SwingTrader
+ * @param {FirebaseApp} app - Firebase app instance
+ * @param {string} redirectPath - Path to redirect if user is not authenticated
+ */
+export function protectPage(app, redirectPath = "/index.html") {
+  console.log("[AuthGuard] 🔐 protectPage() invoked — checking auth state...");
 
-  // ✅ Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
-    authDomain: "swing-trader-6431c.firebaseapp.com",
-    projectId: "swing-trader-6431c",
-    storageBucket: "swing-trader-6431c.firebasestorage.app",
-    messagingSenderId: "255789637374",
-    appId: "1:255789637374:web:1c12a2f513e98559e64faf"
-  };
+  const auth = getAuth(app); // ✅ Modular SDK requires explicit app instance
 
-  // ✅ Initialize Firebase
-  if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
-    console.log("[SwingTrader] ✅ Firebase initialized");
-  } else {
-    console.log("[SwingTrader] ℹ️ Firebase already initialized");
-  }
-
-  // ✅ Stage 2: Safe onAuthStateChanged logic
-  firebase.auth().onAuthStateChanged(user => {
-    const loginBox = document.querySelector(".login-box");
-
+  onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log(`[SwingTrader] 👤 User logged in: ${user.email}`);
-      if (loginBox) {
-        loginBox.style.display = "none";
-        console.log("[SwingTrader] 🧼 Hiding login box");
-      }
+      console.log(`[AuthGuard] ✅ User is logged in: ${user.email}`);
       document.body.style.visibility = "visible";
     } else {
-      console.warn("[SwingTrader] ⛔ No user detected — login required");
-      document.body.style.visibility = "visible"; // Fail-safe: show page even if loginBox missing
+      console.warn(`[AuthGuard] ⛔ No user detected — redirecting to: ${redirectPath}`);
+      window.location.href = redirectPath;
     }
   });
-});
+}
