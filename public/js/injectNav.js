@@ -8,7 +8,7 @@ export function injectNav(uid = null) {
       <a href="userpage1.html">User Page 1</a>
       <a href="watchlist.html">Watchlist</a>
       <div class="dropdown">
-        <a class="dropdown-trigger" href="#">Alerts ▾</a>
+        <a class="dropdown-trigger" href="#">Alerts</a>
         <div class="dropdown-content">
           <a href="setalerts.html">Set Alerts</a>
           <a href="triggeredalerts.html">Triggered Alerts</a>
@@ -17,7 +17,6 @@ export function injectNav(uid = null) {
       ${uid ? `
         <a href="settings.html">Settings</a>
         <a href="#" id="logoutLink">Logout</a>
-        <div id="user-info">Logged in as ${uid}</div>
       ` : ''}
     </nav>
   `;
