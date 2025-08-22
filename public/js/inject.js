@@ -1,18 +1,14 @@
-// public/js/inject.js
-import { injectNav } from "./injectNav.js";
-
-function loadComponent(file, targetId, callback) {
-  fetch(file)
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById(targetId).innerHTML = html;
-      if (callback) callback(); // 🔁 Run callback after injection
-    });
+export function injectNav(uid) {
+  const navHTML = `
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="watchlist.html">Watchlist</a>
+      <a href="setalerts.html">Set Alerts</a>
+      <a href="triggeredalerts.html">Triggered Alerts</a>
+      <div id="user-info">Logged in as ${uid}</div>
+    </nav>
+  `;
+  document.getElementById("navContainer").innerHTML = navHTML;
+  console.log("[SwingTrader] ✅ Nav injected for UID:", uid);
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  loadComponent("header.html", "header-container", () => {
-    injectNav(); // ✅ Inject nav after header loads
-  });
-  loadComponent("footer.html", "footer-container");
-});
