@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { firebaseConfig } from "./firebaseConfig.js";
-import { injectNav } from "./inject.js"; // ✅ Modular nav injection
+// import { injectNav } from "./inject.js"; // ❌ Removed: inject.js no longer exists
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -38,8 +38,8 @@ onAuthStateChanged(auth, (user) => {
     // Hide login box
     if (loginBox) loginBox.style.display = "none";
 
-    // Inject nav bar using modular function
-    injectNav(user.email);
+    // Nav injection removed — reintroduce if needed
+    // injectNav(user.email);
   } else {
     console.log("👤 No user authenticated");
     if (loginBox) loginBox.style.display = "block";
