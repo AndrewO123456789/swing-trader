@@ -10,6 +10,7 @@ export function injectNav(uid = null) {
       <div class="dropdown">
         <a class="dropdown-trigger" href="#">Alerts</a>
         <div class="dropdown-content">
+          <a href="newalert.html">New Alert</a>
           <a href="setalerts.html">Set Alerts</a>
           <a href="triggeredalerts.html">Triggered Alerts</a>
         </div>
