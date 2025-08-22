@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SwingTrader</title>
+
+  <!-- Preload Firebase SDKs for faster hydration -->
+  <link rel="preload" href="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js" as="script">
+  <link rel="preload" href="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js" as="script">
+
+  <!-- Defer Firebase config and main logic -->
+  <script type="module" src="/js/firebaseConfig.js" defer></script>
+  <script type="module" src="/js/main.js" defer></script>
+
   <style>
     /* Reset and base styles */
     * {
@@ -210,63 +219,6 @@
       <button id="loginBtn">Login</button>
     </div>
   </main>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    import { injectNav } from "./js/injectNav.js";
-
-    console.log("⚡ Firebase SDK initialized");
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
-      authDomain: "swing-trader-6431c.firebaseapp.com",
-      projectId: "swing-trader-6431c",
-      storageBucket: "swing-trader-6431c.firebasestorage.app",
-      messagingSenderId: "255789637374",
-      appId: "1:255789637374:web:1c12a2f513e98559e64faf"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const startTime = performance.now();
-
-onAuthStateChanged(auth, (user) => {
-  const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-  console.log(`✅ Firebase Auth ready after ${elapsed}s`);
-
-  if (user) {
-    console.log("✅ User is logged in:", user.email);
-    injectNav(user.uid);
-    document.querySelector(".login-box").style.display = "none";
-  } else {
-    console.log("🔒 No user is logged in.");
-    document.querySelector(".login-box").style.display = "block";
-  }
-});
-
-
-    document.getElementById("loginBtn").addEventListener("click", () => {
-      const email = document.getElementById("emailInput").value;
-      const password = document.getElementById("passwordInput").value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          console.log("✅ Login successful:", userCredential.user.email);
-          // Nav injection handled by onAuthStateChanged
-          alert("Welcome back, " + userCredential.user.email);
-        })
-        .catch((error) => {
-          console.error("❌ Login error:", error.message);
-          alert("Login failed: " + error.message);
-        });
-    });
-  </script>
 
   <footer>
     &copy; 2025 SwingTrader. All rights reserved.
