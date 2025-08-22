@@ -2,7 +2,6 @@
 
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { app } from "./firebaseConfig.js";
-// import { injectNav } from "./inject.js"; // ❌ Removed: inject.js no longer exists
 
 // Firebase Auth instance
 const auth = getAuth(app);
@@ -28,6 +27,31 @@ loginBtn?.addEventListener("click", async () => {
   }
 });
 
+// Nav injection logic
+function injectNav() {
+  console.log("[injectNav] Fired");
+
+  const navContainer = document.getElementById("nav");
+  if (!navContainer) {
+    console.warn("[injectNav] ❌ nav container not found");
+    return;
+  }
+
+  navContainer.innerHTML = `
+    <nav class="main-nav">
+      <ul>
+        <li><a href="/userpage1.html">Home</a></li>
+        <li><a href="/watchlist.html">Watchlist</a></li>
+        <li><a href="/setalerts.html">Set Alerts</a></li>
+        <li><a href="/triggeredalerts.html">Triggered Alerts</a></li>
+        <li><a href="/logout.html">Logout</a></li>
+      </ul>
+    </nav>
+  `;
+
+  console.log("[injectNav] ✅ Nav injected");
+}
+
 // Auth state listener
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -36,8 +60,8 @@ onAuthStateChanged(auth, (user) => {
     // Hide login box
     if (loginBox) loginBox.style.display = "none";
 
-    // Nav injection removed — reintroduce if needed
-    // injectNav(user.email);
+    // Inject nav bar
+    injectNav();
   } else {
     console.log("👤 No user authenticated");
     if (loginBox) loginBox.style.display = "block";
