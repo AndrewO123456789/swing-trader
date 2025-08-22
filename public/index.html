@@ -234,17 +234,22 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    onAuthStateChanged(auth, (user) => {
-      console.log("✅ Firebase Auth ready");
-      if (user) {
-        console.log("✅ User is logged in:", user.email);
-        injectNav(user.uid);
-        document.querySelector(".login-box").style.display = "none";
-      } else {
-        console.log("🔒 No user is logged in.");
-        document.querySelector(".login-box").style.display = "block";
-      }
-    });
+    const startTime = performance.now();
+
+onAuthStateChanged(auth, (user) => {
+  const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
+  console.log(`✅ Firebase Auth ready after ${elapsed}s`);
+
+  if (user) {
+    console.log("✅ User is logged in:", user.email);
+    injectNav(user.uid);
+    document.querySelector(".login-box").style.display = "none";
+  } else {
+    console.log("🔒 No user is logged in.");
+    document.querySelector(".login-box").style.display = "block";
+  }
+});
+
 
     document.getElementById("loginBtn").addEventListener("click", () => {
       const email = document.getElementById("emailInput").value;
