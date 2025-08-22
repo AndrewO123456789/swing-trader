@@ -31,25 +31,29 @@ loginBtn?.addEventListener("click", async () => {
 function injectNav() {
   console.log("[injectNav] Fired");
 
-  const navContainer = document.getElementById("nav");
-  if (!navContainer) {
-    console.warn("[injectNav] ❌ nav container not found");
-    return;
-  }
+  const waitForNav = setInterval(() => {
+    const navContainer = document.getElementById("nav");
 
-  navContainer.innerHTML = `
-    <nav class="main-nav">
-      <ul>
-        <li><a href="/userpage1.html">Home</a></li>
-        <li><a href="/watchlist.html">Watchlist</a></li>
-        <li><a href="/setalerts.html">Set Alerts</a></li>
-        <li><a href="/triggeredalerts.html">Triggered Alerts</a></li>
-        <li><a href="/logout.html">Logout</a></li>
-      </ul>
-    </nav>
-  `;
+    if (navContainer) {
+      clearInterval(waitForNav);
 
-  console.log("[injectNav] ✅ Nav injected");
+      navContainer.innerHTML = `
+        <nav class="main-nav">
+          <ul>
+            <li><a href="/userpage1.html">Home</a></li>
+            <li><a href="/watchlist.html">Watchlist</a></li>
+            <li><a href="/setalerts.html">Set Alerts</a></li>
+            <li><a href="/triggeredalerts.html">Triggered Alerts</a></li>
+            <li><a href="/logout.html">Logout</a></li>
+          </ul>
+        </nav>
+      `;
+
+      console.log("[injectNav] ✅ Nav injected");
+    } else {
+      console.warn("[injectNav] ⏳ Waiting for #nav to appear...");
+    }
+  }, 250); // Check every 250ms
 }
 
 // Auth state listener
