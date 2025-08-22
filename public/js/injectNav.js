@@ -3,21 +3,21 @@ export function injectNav(uid = null) {
   if (!container) return console.warn("[SwingTrader] ⚠️ navContainer not found");
 
   const navHTML = `
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="userpage1.html">User Page 1</a>
-      <a href="watchlist.html">Watchlist</a>
+    <nav class="main-nav">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="userpage1.html">User Page 1</a>
+      <a class="nav-link" href="watchlist.html">Watchlist</a>
       <div class="dropdown">
-        <a class="dropdown-trigger" href="#">Alerts</a>
+        <a class="nav-link dropdown-trigger" href="#">Alerts</a>
         <div class="dropdown-content">
-          <a href="newalert.html">New Alert</a>
-          <a href="setalerts.html">Set Alerts</a>
-          <a href="triggeredalerts.html">Triggered Alerts</a>
+          <a class="dropdown-item" href="newalert.html">New Alert</a>
+          <a class="dropdown-item" href="setalerts.html">Set Alerts</a>
+          <a class="dropdown-item" href="triggeredalerts.html">Triggered Alerts</a>
         </div>
       </div>
       ${uid ? `
-        <a href="settings.html">Settings</a>
-        <a href="#" id="logoutLink">Logout</a>
+        <a class="nav-link" href="settings.html">Settings</a>
+        <a class="nav-link" href="#" id="logoutLink">Logout</a>
       ` : ''}
     </nav>
   `;
