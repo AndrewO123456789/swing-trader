@@ -5,10 +5,9 @@ export function injectNav(uid = null) {
   const navHTML = `
     <nav class="main-nav">
       <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="userpage1.html">User Page 1</a>
       <a class="nav-link" href="watchlist.html">Watchlist</a>
       <div class="dropdown">
-        <a class="nav-link dropdown-trigger" href="#">Alerts</a>
+        <a href="#" class="nav-link dropdown-trigger">Alerts</a>
         <div class="dropdown-content">
           <a class="dropdown-item" href="newalert.html">New Alert</a>
           <a class="dropdown-item" href="setalerts.html">Set Alerts</a>
