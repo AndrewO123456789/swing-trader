@@ -253,17 +253,6 @@
         alert("Login failed: " + error.message);
       });
   });
-
-  document.getElementById("logout-btn").addEventListener("click", () => {
-    signOut(auth)
-      .then(() => {
-        console.log("👋 User signed out.");
-        window.location.href = "index.html";
-      })
-      .catch((error) => {
-        console.error("❌ Logout error:", error.message);
-      });
-  });
 </script>
 
 <footer>
