@@ -220,7 +220,7 @@
     } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
     import { injectNav } from "./js/injectNav.js";
 
-    console.log("🚀 Initializing Firebase for index.html");
+    console.log("⚡ Firebase SDK initialized");
 
     const firebaseConfig = {
       apiKey: "AIzaSyCtrZRTIKiN_6UasKzkemvEbRkSCMow6Qo",
@@ -235,6 +235,7 @@
     const auth = getAuth(app);
 
     onAuthStateChanged(auth, (user) => {
+      console.log("✅ Firebase Auth ready");
       if (user) {
         console.log("✅ User is logged in:", user.email);
         injectNav(user.uid);
@@ -252,7 +253,7 @@
       signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
           console.log("✅ Login successful:", userCredential.user.email);
-          injectNav(userCredential.user.uid);
+          // Nav injection handled by onAuthStateChanged
           alert("Welcome back, " + userCredential.user.email);
         })
         .catch((error) => {
