@@ -1,16 +1,15 @@
-<nav>
-  <a href="index.html">Home</a>
-  <a href="watchlist.html">Watchlist</a>
+<nav class="main-nav">
+  <a class="nav-link" href="index.html">Home</a>
+  <a class="nav-link" href="watchlist.html">Watchlist</a>
+
   <div class="dropdown">
-    <a href="#" class="dropdown-trigger">Alerts</a>
+    <a href="#" class="nav-link dropdown-trigger">Alerts</a>
     <div class="dropdown-content">
-      <a href="newalert.html">New Alert</a>
-      <a href="setalerts.html">Set Alerts</a>
-      <a href="triggeredalerts.html">Triggered Alerts</a>
-    </div>
+     <a class="dropdown-item" href="triggeredalerts.html">Triggered</a>
+      <a class="dropdown-item" href="setalerts.html">Set</a>
+      <a class="dropdown-item" href="Managealerts.html">Manage</a>
+          </div>
   </div>
-  <a href="userpage1.html">User1</a>
-  <a href="#">Settings</a>
-  <a href="blankpage.html">Blank Page</a>
-  <a id="logout-btn">Logout</a>
+   <a class="nav-link uid-only" href="settings.html" style="display: none;">Settings</a>
+  <a class="nav-link uid-only" href="#" id="logoutLink" style="display: none;">Logout</a>
 </nav>
