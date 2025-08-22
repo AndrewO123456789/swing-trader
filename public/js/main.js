@@ -1,12 +1,10 @@
 // File: /public/js/main.js
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { firebaseConfig } from "./firebaseConfig.js";
+import { app } from "./firebaseConfig.js";
 // import { injectNav } from "./inject.js"; // ❌ Removed: inject.js no longer exists
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Firebase Auth instance
 const auth = getAuth(app);
 console.log("✅ Firebase initialized");
 
